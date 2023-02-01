@@ -7,7 +7,5 @@ import lombok.Data;
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CommentEditRequestDTO {
-    private String intraId;
-    private Long commentId;
     private String content;
 }

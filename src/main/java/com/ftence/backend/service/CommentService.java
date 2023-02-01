@@ -1,5 +1,6 @@
 package com.ftence.backend.service;
 
+import com.ftence.backend.dto.Request.CommentEditRequestDTO;
 import com.ftence.backend.dto.Request.CommentRequestDTO;
 import com.ftence.backend.dto.Response.CommentResponseDTO;
 import com.ftence.backend.dto.Response.LoginResponseDTO;
@@ -125,5 +126,11 @@ public class CommentService {
         comment.setUserLevel(user.getLevel());
 
         return comment;
+    }
+
+    public void saveComment(Long commentId, CommentEditRequestDTO commentEditRequestDTO){
+        Comment comment = commentRepository.findById(commentId).get();
+        comment.setContent(commentEditRequestDTO.getContent());
+        commentRepository.save(comment);
     }
 }

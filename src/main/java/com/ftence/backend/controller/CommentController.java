@@ -1,5 +1,6 @@
 package com.ftence.backend.controller;
 
+import com.ftence.backend.dto.Request.CommentEditRequestDTO;
 import com.ftence.backend.dto.Request.CommentRequestDTO;
 import com.ftence.backend.dto.Response.CommentResponseDTO;
 import com.ftence.backend.dto.Response.LoginResponseDTO;
@@ -31,5 +32,10 @@ public class CommentController  {
     @GetMapping("/{subjectName}/comment")
     public List<CommentResponseDTO> getCommentList(@PathVariable String subjectName){
         return commentService.getAllSubjectComment(subjectRepository.findByName(subjectName));
+    }
+
+    @PutMapping("/subject/comment/edit/{commentId}")
+    public void editComment(@PathVariable Long commentId, @RequestBody CommentEditRequestDTO commentEditRequestDTO) {
+        commentService.saveComment(commentId, commentEditRequestDTO);
     }
 }

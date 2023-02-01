@@ -19,7 +19,4 @@ public class UserController {
     public List<LoginResponseDTO> getUserInfo(@PathVariable String intraId) {
         return userService.getUserInfo(intraId);
     }
-
-
-    @GetMapping("/")
 }
